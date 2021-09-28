@@ -14,9 +14,13 @@ import org.springframework.context.annotation.PropertySource;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @PropertySource("classpath:/application.properties")
+//@EnableTransactionManagement
 public class DatabaseConfiguration {
 
     @Autowired
@@ -55,4 +59,9 @@ public class DatabaseConfiguration {
     public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sqlSessionFactory) {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
+
+//    @Bean
+//    public PlatformTransactionManager transactionManager() throws Exception {
+//        return new DataSourceTransactionManager(dataSource());
+//    }
 }

@@ -1,4 +1,4 @@
-package com.example.springboard.board.aop;
+package com.example.springboard.aop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class LoggerAspect {
     private Logger log = LoggerFactory.getLogger(this.getClass());
 
-    @Around("execution(* com.example.springboard.board.controller.*Controller.*(..)) || execution(* com.example.springboard.board.service.*Impl.*(..)) || execution(* com.example.springboard.board.mapper.*Mapper.*(..))")
+    @Around("execution(* com.example.springboard..controller.*Controller.*(..)) || execution(* com.example.springboard..service.*Impl.*(..)) || execution(* com.example.springboard..mapper.*Mapper.*(..))")
     public Object logPrint(ProceedingJoinPoint joinPoint) throws Throwable {
         String type = "";
         String name = joinPoint.getSignature().getDeclaringTypeName();
