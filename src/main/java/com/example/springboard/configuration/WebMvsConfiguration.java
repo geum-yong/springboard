@@ -1,6 +1,6 @@
 package com.example.springboard.configuration;
 
-import com.example.springboard.board.interceptor.LoggerInterceptor;
+import com.example.springboard.interceptor.LoggerInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
