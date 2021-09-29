@@ -3,6 +3,7 @@ package com.example.springboard.board.dto;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 public class BoardDto {
@@ -14,4 +15,5 @@ public class BoardDto {
     private LocalDateTime createdDatetime;
     private String updaterId;
     private LocalDateTime updatedDatetime;
+    private List<BoardFileDto> fileList;
 }
