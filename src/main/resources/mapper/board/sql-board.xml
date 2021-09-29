@@ -17,7 +17,7 @@
         ]]>
     </select>
 
-    <insert id="insertBoard" parameterType="com.example.springboard.board.dto.BoardDto">
+    <insert id="insertBoard" parameterType="com.example.springboard.board.dto.BoardDto" useGeneratedKeys="true" keyProperty="boardIdx">
         <![CDATA[
             INSERT INTO t_board
             (
@@ -34,6 +34,26 @@
                 'admin'
             )
         ]]>
+    </insert>
+
+    <insert id="insertBoardFileList" parameterType="com.example.springboard.board.dto.BoardFileDto">
+        <![CDATA[
+            INSERT INTO t_file
+            (board_idx, original_file_name, stored_file_path, file_size,
+             creator_id, created_datetime
+            )
+            VALUE
+        ]]>
+        <foreach collection="list" item="item" separator=",">
+            (
+                #{item.boardIdx},
+                #{item.originalFileName},
+                #{item.storedFilePath},
+                #{item.fileSize},
+                'admin',
+                NOW()
+            )
+        </foreach>
     </insert>
 
     <update id="updateHitCount" parameterType="int">
