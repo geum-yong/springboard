@@ -8,8 +8,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.ObjectUtils;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import javax.transaction.Transactional;
+import java.util.Iterator;
 import java.util.List;
 
 @Slf4j
@@ -37,7 +41,7 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public BoardDto selectBoardDetail(int boardIdx) throws Exception {
+    public BoardDto selectBoardDetail(int boardIdx) throws Exception{
         BoardDto board = boardMapper.selectBoardDetail(boardIdx);
         List<BoardFileDto> fileList = boardMapper.selectBoardFileList(boardIdx);
         board.setFileList(fileList);
